@@ -1,0 +1,8 @@
+gunicorn
+
+requests
+bs4
+time
+pickle
+os
+

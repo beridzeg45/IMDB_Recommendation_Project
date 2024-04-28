@@ -79,7 +79,7 @@ for file in os.listdir(path):
     if 'all_data_' in file: 
         index=int(file.split('all_data_')[-1].split('.pickle')[0]) 
         if index>max_index: 
-            max_year=index
+            max_index=index
 
 all_data=[]
 
@@ -89,7 +89,7 @@ for i,movie_url in enumerate(all_movie_urls,start=1):
     info_dict=return_movie_info(movie_url)
     all_data.append(info_dict)
 
-    if i%1000==0 or i==len(all_data):
+    if i%1000==0 or i==len(all_movie_urls):
         pickle.dump(all_data,open(os.path.join(path,f'all_data_{i}'),'wb'))
         all_data=[]
 

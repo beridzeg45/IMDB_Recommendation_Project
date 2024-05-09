@@ -19,7 +19,7 @@ def return_similar_movies(selected_value):
         (df['Directors'].str.contains(director, na=False,case=False)) &
         (df['Genres'].str.contains(genre, na=False,case=False)) &
         (df['Title'].notna())
-    ].sort_values(['Rating Count', 'IMDB Rating'], ascending=[False, False]).head(5)
+    ].sort_values(['Rating Count', 'IMDB Rating'], ascending=[False, False])
     
     similar_movies_titles = similar_movies_df['Title'].tolist()
     similar_movies_posters = similar_movies_df['Poster'].tolist()
@@ -46,6 +46,7 @@ if st.button('Show Recommended Movies') and input_value:
 
 # Add intro text to upper left corner
 intro_text="""
+\n\n\n
 Hi! I'm Giorgi, and this is my latest python project. This website recommends movies based on the director's work.\n
 I gathered movie data from IMDB.com using Python's Selenium and BeautifulSoup web scraping libraries.\n
 If you're curious about the code and want to explore it, feel free to visit my Github account! (https://github.com/beridzeg45)\n

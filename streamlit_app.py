@@ -42,3 +42,12 @@ if st.button('Show Recommended Movies') and input_value:
         with cols[i]:
             st.markdown(f"<span style='font-size: 14px;'><a href='{url}'>{title}</a></span>", unsafe_allow_html=True)
             st.image(poster)
+
+
+# Add intro text to upper left corner
+intro_text="""
+Hi! I'm Giorgi, and this is my latest python project. This website recommends movies based on the director's work.\n
+I gathered movie data from IMDB.com using Python's Selenium and BeautifulSoup web scraping libraries.\n
+If you're curious about the code and want to explore it, feel free to visit my Github account! (https://github.com/beridzeg45)\n
+"""
+st.write("<div style='text-align: left;'>" + intro_text + "</div>", unsafe_allow_html=True)

@@ -1,5 +1,3 @@
-gunicorn
-
 requests
 bs4
 streamlit

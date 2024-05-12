@@ -31,7 +31,7 @@ def return_similar_movies(selected_value):
 
 
 #st app
-st.set_page_config(layout="wide")
+#st.set_page_config(layout="wide")
 
 st.header('Movie Recommendation Project')
 input_value = st.text_input('Type movie title to get recommendations', '')

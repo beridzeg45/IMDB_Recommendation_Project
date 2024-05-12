@@ -16,7 +16,7 @@ def return_similar_movies(selected_value):
     genre = filtered_movie['Genres']
     
     similar_movies_df = df[
-        (df['Directors'].str.contains(director, na=False,case=False)) &
+        (df['Directors']==director) &
         (df['Title'].notna())
     ].sort_values(['Rating Count', 'IMDB Rating'], ascending=[False, False])
     
@@ -25,8 +25,6 @@ def return_similar_movies(selected_value):
     similar_movies_urls = similar_movies_df['Movie URL'].tolist()
     
     return similar_movies_titles, similar_movies_posters, similar_movies_urls
-
-
 
 
 #st app

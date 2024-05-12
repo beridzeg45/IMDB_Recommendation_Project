@@ -31,13 +31,13 @@ def return_similar_movies(selected_value):
 
 
 #st app
-#st.set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 
 st.header('Movie Recommendation Project')
-input_value = st.text_input('Type movie title to get recommendations', '')
+search_value = st.text_input('Type movie title to get recommendations', '')
 
 if st.button('Show Recommended Movies') and input_value:
-    titles, posters, urls = return_similar_movies(input_value)
+    titles, posters, urls = return_similar_movies(search_value)
     cols = st.columns(len(titles))
 
     for i, (title, poster, url) in enumerate(zip(titles, posters, urls)):

@@ -36,7 +36,7 @@ st.set_page_config(layout="wide")
 st.header('Movie Recommendation Project')
 search_value = st.text_input('Type movie title to get recommendations', '')
 
-if st.button('Show Recommended Movies') and input_value:
+if st.button('Show Recommended Movies') and search_value:
     titles, posters, urls = return_similar_movies(search_value)
     cols = st.columns(len(titles))
 

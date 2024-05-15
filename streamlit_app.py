@@ -8,8 +8,8 @@ list_of_movies=df['Title'].unique().tolist()
 
 #define function
 def return_similar_movies(selected_value):
-    selected_value = selected_value.lower().split(' (')[0]
-    filtered_df = df[df['Title'].str.lower().str.contains(selected_value, na=False)].sort_values('Rating Count', ascending=False)
+
+    filtered_df = df[df['Title']==selected_value].sort_values('Rating Count', ascending=False)
     if len(filtered_df)==0:
         st.warning("No movies found matching the input title.")
         return [], [], []
@@ -47,11 +47,19 @@ if st.button('Show Recommended Movies') and input_value:
 st.sidebar.markdown("# About me:")
 
 intro_text = """
-Hi! I'm Giorgi, and this is my latest python project. This website recommends movies based on the director's work.\n
+Hi!👋 \n
+I'm Giorgi, and this is my latest python project. This website recommends movies based on the director's work.\n
 I gathered movie data from IMDB.com using Python's Selenium and BeautifulSoup web scraping libraries.\n
 If you're curious about the code and want to explore it, feel free to visit my Github account! [GitHub](https://github.com/beridzeg45)\n
+You will be able to check the scraped dataset on my Kaggle page: [Kaggle](https://www.kaggle.com/datasets/beridzeg45/all-movies-on-imdb)\n
 """
 
 st.sidebar.markdown(intro_text)
 
+#graphs
+st.header('Graphs')
+st.image("timeseries.svg", use_column_width=True)
+col1, col2 = st.columns(2)
+col1.image("top_directors.svg", use_column_width=True)
+col2.image("number_of_movies_by_genre.svg", use_column_width=True)
 

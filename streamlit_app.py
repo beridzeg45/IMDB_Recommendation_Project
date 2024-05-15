@@ -90,10 +90,10 @@ st.sidebar.markdown(intro_text)
 
 #graphs
 st.header('Graphs')
-st.image("timeseries.svg", use_column_width=True)
+st.image("timeseries.png", use_column_width=True)
 col1, col2 = st.columns(2)
-col1.image("top_directors.svg", use_column_width=True)
-col2.image("number_of_movies_by_genre.svg", use_column_width=True)
+col1.image("top_directors.png", use_column_width=True)
+col2.image("number_of_movies_by_genre.png", use_column_width=True)
 
 
 

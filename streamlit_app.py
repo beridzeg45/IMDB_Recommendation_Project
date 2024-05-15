@@ -1,7 +1,9 @@
 import streamlit as st
 import pandas as pd
-import datetime
 import sqlite3
+import datetime
+import matplotlib.pyplot as plt
+plt.style.use('ggplot')
 
 
 #preprocess
@@ -101,4 +103,13 @@ col2.image("number_of_movies_by_genre.svg", use_column_width=True)
 conn = sqlite3.connect('user_movie_searches.db')
 df = pd.read_sql_query("SELECT * FROM movie_searches", conn)
 conn.close()
-st.dataframe(df)
+
+df['timestamp']=pd.to_datetime(df['timestamp'])
+top_10=df.groupby('movie_searched')['user_id'].count().sort_values(ascending=False).reset_index().rename(columns={'mvoie_searched':'Title','user_id':'Search Count'}).head(10)
+st.subheader('10 Most Frequently Searched Movies')
+st.dataframe(top_10)
+
+fig, ax = plt.subplots(figsize=(8,4))
+fig_data = df.groupby(df['timestamp'].dt.to_period('D'))['user_id'].count()
+fig_data.plot.line(marker='.', xlabel='Date', ylabel='Visitors', title='Visitors By Date', ax=ax)
+st.pyplot(fig)

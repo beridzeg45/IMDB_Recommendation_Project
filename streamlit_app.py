@@ -80,6 +80,8 @@ intro_text = """
 Hi!👋 \n
 I'm Giorgi, and this is my latest python project. This website recommends movies based on the director's work.\n
 I gathered movie data from IMDB.com using Python's Selenium and BeautifulSoup web scraping libraries.\n
+Apart from recommendations, the project involvs exploratory data analysis on movies, visualized by matplotlib graphs\n
+Also, you will find information on most searched movies on this site by users, as well as daily user traffic\n 
 If you're curious about the code and want to explore it, feel free to visit my Github account! [GitHub](https://github.com/beridzeg45)\n
 You will be able to check the scraped dataset on my Kaggle page: [Kaggle](https://www.kaggle.com/datasets/beridzeg45/all-movies-on-imdb)\n
 """
@@ -104,12 +106,17 @@ conn = sqlite3.connect('user_movie_searches.db')
 df = pd.read_sql_query("SELECT * FROM movie_searches", conn)
 conn.close()
 
+st.header('Website Traffic And Search Stats')
+
+col1, col2 = st.columns(2)
 df['timestamp']=pd.to_datetime(df['timestamp'])
 top_10=df.groupby('movie_searched')['user_id'].count().sort_values(ascending=False).reset_index().rename(columns={'mvoie_searched':'Title','user_id':'Search Count'}).head(10)
-st.subheader('10 Most Frequently Searched Movies')
-st.dataframe(top_10)
+with col1:
+    st.subheader('10 Most Frequently Searched Movies')
+    st.dataframe(top_10)
+
 
 fig, ax = plt.subplots(figsize=(8,4))
 fig_data = df.groupby(df['timestamp'].dt.to_period('D'))['user_id'].count()
 fig_data.plot.line(marker='.', xlabel='Date', ylabel='Visitors', title='Visitors By Date', ax=ax)
-st.pyplot(fig)
+col2.pyplot(fig)

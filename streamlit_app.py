@@ -91,6 +91,7 @@ st.sidebar.markdown(intro_text)
 
 
 #graphs
+st.markdown("<br><br>", unsafe_allow_html=True)
 st.header('Graphs')
 st.image("timeseries.png", use_column_width=True)
 col1, col2 = st.columns(2)
@@ -106,6 +107,7 @@ conn = sqlite3.connect('user_movie_searches.db')
 df = pd.read_sql_query("SELECT * FROM movie_searches", conn)
 conn.close()
 
+st.markdown("<br><br>", unsafe_allow_html=True)
 st.header('Website Traffic And Search Stats')
 
 col1, col2 = st.columns(2)

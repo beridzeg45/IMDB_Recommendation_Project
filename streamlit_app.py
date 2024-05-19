@@ -114,5 +114,4 @@ col1, col2 = st.columns(2)
 df['timestamp']=pd.to_datetime(df['timestamp'])
 top_10=df.groupby('movie_searched')['user_id'].count().sort_values(ascending=False).reset_index().rename(columns={'mvoie_searched':'Title','user_id':'Search Count'}).head(10)
 with col1:
-    st.subheader('10 Most Frequently Searched Movies')
     st.dataframe(top_10)

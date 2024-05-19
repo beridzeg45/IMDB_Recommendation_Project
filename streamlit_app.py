@@ -92,7 +92,7 @@ st.sidebar.markdown(intro_text)
 
 #graphs
 st.markdown("<br><br>", unsafe_allow_html=True)
-st.header('Graphs')
+st.header('Stats')
 st.image("timeseries.png", use_column_width=True)
 col1, col2 = st.columns(2)
 col1.image("top_directors.png", use_column_width=True)

@@ -116,9 +116,3 @@ top_10=df.groupby('movie_searched')['user_id'].count().sort_values(ascending=Fal
 with col1:
     st.subheader('10 Most Frequently Searched Movies')
     st.dataframe(top_10)
-
-
-fig, ax = plt.subplots(figsize=(8,4))
-fig_data = df.groupby(df['timestamp'].dt.to_period('D'))['user_id'].count()
-fig_data.plot.line(marker='.', xlabel='Date', ylabel='Visitors', title='Visitors By Date', ax=ax)
-col2.pyplot(fig)

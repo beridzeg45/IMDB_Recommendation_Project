@@ -108,10 +108,10 @@ df = pd.read_sql_query("SELECT * FROM movie_searches", conn)
 conn.close()
 
 st.markdown("<br><br>", unsafe_allow_html=True)
-st.header('Website Traffic And Search Stats')
 
 col1, col2 = st.columns(2)
 df['timestamp']=pd.to_datetime(df['timestamp'])
 top_10=df.groupby('movie_searched')['user_id'].count().sort_values(ascending=False).reset_index().rename(columns={'mvoie_searched':'Title','user_id':'Search Count'}).head(10)
 with col1:
+    st.text('10 Most Frequently Searched Movies')
     st.dataframe(top_10)
